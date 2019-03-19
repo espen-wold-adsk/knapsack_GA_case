@@ -10,8 +10,8 @@ max_area = polygon_area(site_polygon)
 population_size = 100
 number_of_offspring_each_generation = 30
 chance_to_do_crossover = 0.9
-mutation_rate = 2 / len(building_vector)    # For uniform mutation
-number_of_mutations = 2                     # For n-point mutation
+mutation_rate = 2 / len(building_vector)  # For uniform mutation
+number_of_mutations = 2  # For n-point mutation
 generations = 100
 
 
@@ -55,7 +55,6 @@ for i in range(generations):
 print("\nSearch over")
 print_fitness_values(population, max_area)
 solution_buildings = get_best_solution_buildings(population, building_vector)
-post_best_solution_to_highscore(population, "simoo")
 plot_polygons_lines_and_points(
     blue_polygons=[b for b in solution_buildings], yellow_polygon=site_polygon
 )
