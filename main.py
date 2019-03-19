@@ -1,6 +1,7 @@
 from plotting import plot_polygons_lines_and_points
-from GA_helpers import *
 from polygon_helpers import polygon_area
+from data_client import read_problem_from_json
+from GA_helpers import *
 
 
 site_polygon, building_vector = read_problem_from_json()
@@ -8,11 +9,11 @@ max_area = polygon_area(site_polygon)
 
 # Search parameters
 population_size = 100
-number_of_offspring_each_generation = 30
+number_of_offspring_each_generation = 10
 chance_to_do_crossover = 0.9
-mutation_rate = 2 / len(building_vector)  # For uniform mutation
+mutation_rate = 1 / len(building_vector)  # For uniform mutation
 number_of_mutations = 2  # For n-point mutation
-generations = 100
+generations = 200
 
 
 # Initialize population
@@ -54,7 +55,11 @@ for i in range(generations):
 # Print best solution stats and plot site with solution buildings
 print("\nSearch over")
 print_fitness_values(population, max_area)
-solution_buildings = get_best_solution_buildings(population, building_vector)
+
+best_individual = max(population, key=lambda x: x.fitness)
+solution_buildings = get_best_solution_buildings(best_individual.genome, building_vector)
 plot_polygons_lines_and_points(
     blue_polygons=[b for b in solution_buildings], yellow_polygon=site_polygon
 )
+
+# Submit solution to scoreboard

@@ -1,10 +1,9 @@
 import random
-import json
 from polygon_helpers import polygon_area
 from polygon_overlapping_area import polygon_intersection_area
 from data_client import post_genome_to_highscore
 
-NUMERICAL_PRECISION = 1e-10
+NUMERICAL_PRECISION = 1e-8
 
 
 class Individual:
@@ -70,23 +69,6 @@ def solution_score(genome, building_vector):
     return sum([polygon_area(b) for b in included_buildings])
 
 
-# Helper functions
-########################################################################
-def read_problem_from_json():
-    json_file = open("data.json", "r")
-    problem_data = json.load(json_file)
-
-    site_polygon = problem_data["site_polygon"]
-    buildings = []
-    for building in problem_data["buildings"]:
-        b = {}
-        b["coordinates"] = building["coordinates"]
-        b["area"] = building["area"]
-        b["indices_of_overlapping_buildings"] = building["indices_of_overlapping_buildings"]
-        buildings.append(b)
-    return site_polygon, buildings
-
-
 def print_fitness_values(population, max_area):
     fitness_sum = sum([individual.fitness for individual in population])
     best_fitness = max([individual.fitness for individual in population])
@@ -98,13 +80,12 @@ def print_fitness_values(population, max_area):
     )
 
 
-def get_best_solution_buildings(population, building_vector):
-    # Return the polygons of the buildings included in the best solution
-    best_individual = max(population, key=lambda x: x.fitness)
+def get_best_solution_buildings(best_individual_genome, building_vector):
+    # Return the polygons of the buildings included in the solution
     return [
         building_vector[index]["coordinates"]
-        for index in range(len(best_individual.genome))
-        if best_individual.genome[index]
+        for index in range(len(best_individual_genome))
+        if best_individual_genome[index]
     ]
 
 
