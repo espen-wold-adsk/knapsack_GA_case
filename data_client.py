@@ -8,10 +8,7 @@ def post_genome_to_highscore(genome, name):
     headers = {"Content-Type": "application/json"}
     data = {"solution": {"genome": genome}, "name": name}
 
-    response = requests.post(url=ENDPOINT, headers=headers, data=json.dumps(data))
-
-
-import json
+    requests.post(url=ENDPOINT, headers=headers, data=json.dumps(data))
 
 
 def read_problem_from_json():
