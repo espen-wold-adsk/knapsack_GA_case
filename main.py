@@ -54,7 +54,12 @@ for i in range(generations):
 # Print best solution stats and plot site with solution buildings
 print("\nSearch over")
 print_fitness_values(population, max_area)
-solution_buildings = get_best_solution_buildings(population, building_vector)
+
+best_individual = max(population, key=lambda x: x.fitness)
+solution_buildings = get_best_solution_buildings(best_individual.genome, building_vector)
 plot_polygons_lines_and_points(
     blue_polygons=[b for b in solution_buildings], yellow_polygon=site_polygon
 )
+
+# Submit solution to scoreboard
+
