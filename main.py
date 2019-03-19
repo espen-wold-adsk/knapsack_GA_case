@@ -1,5 +1,4 @@
 from plotting import plot_polygons_lines_and_points
-from polygon_helpers import polygon_area
 from data_client import read_problem_from_json
 from GA_helpers import *
 
@@ -62,4 +61,6 @@ plot_polygons_lines_and_points(
     blue_polygons=[b for b in solution_buildings], yellow_polygon=site_polygon
 )
 
+
 # Submit solution to scoreboard
+# post_best_solution_to_highscore(population=population, name="example")
