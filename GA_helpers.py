@@ -1,5 +1,4 @@
 import random
-import json
 from polygon_helpers import polygon_area
 from polygon_overlapping_area import polygon_intersection_area
 
@@ -67,23 +66,6 @@ def solution_score(genome, building_vector):
             included_buildings.append(building_vector[index]["coordinates"])
 
     return sum([polygon_area(b) for b in included_buildings])
-
-
-# Helper functions
-########################################################################
-def read_problem_from_json():
-    json_file = open("data.json", "r")
-    problem_data = json.load(json_file)
-
-    site_polygon = problem_data["site_polygon"]
-    buildings = []
-    for building in problem_data["buildings"]:
-        b = {}
-        b["coordinates"] = building["coordinates"]
-        b["area"] = building["area"]
-        b["indices_of_overlapping_buildings"] = building["indices_of_overlapping_buildings"]
-        buildings.append(b)
-    return site_polygon, buildings
 
 
 def print_fitness_values(population, max_area):
