@@ -2,6 +2,7 @@ import random
 import json
 from polygon_helpers import polygon_area
 from polygon_overlapping_area import polygon_intersection_area
+from data_client import post_genome_to_highscore
 
 NUMERICAL_PRECISION = 1e-10
 
@@ -106,3 +107,7 @@ def get_best_solution_buildings(population, building_vector):
         if best_individual.genome[index]
     ]
 
+
+def post_best_solution_to_highscore(population, name):
+    best_individual = max(population, key=lambda x: x.fitness)
+    post_genome_to_highscore(genome=best_individual.genome, name=name)
