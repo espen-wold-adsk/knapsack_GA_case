@@ -3,6 +3,7 @@ from polygon_helpers import polygon_area
 from data_client import read_problem_from_json
 from GA_helpers import *
 
+
 site_polygon, building_vector = read_problem_from_json()
 max_area = polygon_area(site_polygon)
 
@@ -10,8 +11,8 @@ max_area = polygon_area(site_polygon)
 population_size = 100
 number_of_offspring_each_generation = 10
 chance_to_do_crossover = 0.9
-mutation_rate = 1 / len(building_vector)    # For uniform mutation
-number_of_mutations = 2                     # For n-point mutation
+mutation_rate = 1 / len(building_vector)  # For uniform mutation
+number_of_mutations = 2  # For n-point mutation
 generations = 200
 
 
@@ -62,4 +63,3 @@ plot_polygons_lines_and_points(
 )
 
 # Submit solution to scoreboard
-
