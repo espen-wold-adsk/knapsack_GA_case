@@ -4,7 +4,8 @@ Genetic algorithm case for workshop with CogitoNTNU
 ### Requirements
 - python 3.7 (should also work with python 2.7)
 - matplotlib
-- 
+- requests
+
 Run `pip install -r requirements.txt` in a terminal, and you should
  be able to run the code.
 
@@ -49,7 +50,7 @@ Here you should implement your top-level strategy for solving the problem.
 This file contains the implementation of some helper functions and
 various simple genetic algorithm operators, including tournament
 selection methods and simple mutation and crossover operations 
-for simple binary string genomes.
+for binary string genomes.
 
 Here you should implement the specific operators and helper functions you 
 need to support your strategy for solving the problem.
@@ -59,3 +60,4 @@ When you are ready to submit, you may use of one of two functions provided. In `
 named `post_best_solution_to_highscore`. It takes your population (with the assumption that you have used the provides Individual class)
 and your name as input and posts the best solution to the scoreboard. You may also use `post_genome_to_highscore` in `data_client.py`
 which takes the genome you want to post to the scoreboard, and your name as arguments. 
+

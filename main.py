@@ -11,7 +11,7 @@ population_size = 100
 number_of_offspring_each_generation = 10
 chance_to_do_crossover = 0.9
 mutation_rate = 1 / len(building_vector)  # For uniform mutation
-number_of_mutations = 2  # For n-point mutation
+number_of_mutations = 1  # For n-point mutation
 generations = 200
 
 
@@ -22,7 +22,7 @@ for i in range(generations):
 
     # Generate offspring
     offspring = []
-    for _ in range(number_of_offspring_each_generation):
+    while len(offspring) < number_of_offspring_each_generation:
 
         # Parent selection
         [parent1, parent2] = random.sample(population=population, k=2)
@@ -51,12 +51,11 @@ for i in range(generations):
     print_fitness_values(population, max_area)
 
 
-# Print best solution stats and plot site with solution buildings
+# Print population stats and plot site with buildings from best solution 
 print("\nSearch over")
 print_fitness_values(population, max_area)
 
-best_individual = max(population, key=lambda x: x.fitness)
-solution_buildings = get_best_solution_buildings(best_individual.genome, building_vector)
+solution_buildings = get_best_solution_buildings(population, building_vector)
 plot_polygons_lines_and_points(
     blue_polygons=[b for b in solution_buildings], yellow_polygon=site_polygon
 )
