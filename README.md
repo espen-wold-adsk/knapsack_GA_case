@@ -4,7 +4,8 @@ Genetic algorithm case for workshop with CogitoNTNU
 ### Requirements
 - python 3.7 (should also work with python 2.7)
 - matplotlib
-- 
+- requests
+
 Run `pip install -r requirements.txt` in a terminal, and you should
  be able to run the code.
 
@@ -49,7 +50,7 @@ Here you should implement your top-level strategy for solving the problem.
 This file contains the implementation of some helper functions and
 various simple genetic algorithm operators, including tournament
 selection methods and simple mutation and crossover operations 
-for simple binary string genomes.
+for binary string genomes.
 
 Here you should implement the specific operators and helper functions you 
 need to support your strategy for solving the problem.
