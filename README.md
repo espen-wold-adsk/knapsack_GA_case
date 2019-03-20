@@ -54,3 +54,10 @@ for binary string genomes.
 
 Here you should implement the specific operators and helper functions you 
 need to support your strategy for solving the problem.
+
+### Submission to the score bord
+When you are ready to submit, you may use of one of two functions provided. In `GA_helpers.py` there is a function
+named `post_best_solution_to_highscore`. It takes your population (with the assumption that you have used the provides Individual class)
+and your name as input and posts the best solution to the scoreboard. You may also use `post_genome_to_highscore` in `data_client.py`
+which takes the genome you want to post to the scoreboard, and your name as arguments. 
+
