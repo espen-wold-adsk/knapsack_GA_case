@@ -80,12 +80,13 @@ def print_fitness_values(population, max_area):
     )
 
 
-def get_best_solution_buildings(best_individual_genome, building_vector):
-    # Return the polygons of the buildings included in the solution
+def get_best_solution_buildings(population, building_vector):
+    # Return the polygons of the buildings included in the best solution
+    best_individual = max(population, key=lambda x: x.fitness)
     return [
         building_vector[index]["coordinates"]
-        for index in range(len(best_individual_genome))
-        if best_individual_genome[index]
+        for index in range(len(best_individual.genome))
+        if best_individual.genome[index]
     ]
 
 
